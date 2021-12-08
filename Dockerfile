@@ -41,10 +41,10 @@ RUN \
  curl -L ${PYTIVO_TARBALL_URL} \
 	| tar -xz -C /app/pytivo --strip-components=1 && \
  chmod +x /app/pytivo/pyTivo.py && \
+ sed -i '/^[^#]*ffmpeg/s/^/#/' /app/pytivo/pyTivo.conf.dist && \
+ sed -i '\%^[^#]*/home/armooo%Is%/home/armooo/Videos%/Videos%I' /app/pytivo/pyTivo.conf.dist && \
  mkdir -p /config && \
  cp /app/pytivo/pyTivo.conf.dist /config/pyTivo.conf && \
- sed -i '/^[^#]*ffmpeg/s/^/#/' /config/pyTivo.conf && \
- sed -i '\%^[^#]*/home/armooo%Is%/home/armooo/Videos%/Videos%I' /config/pyTivo.conf && \
  echo "**** install pytivo requirements ****" && \
  ${PYTHON_PKG} -m pip install --upgrade pip && \
  ${PYTHON_PKG} -m pip install -r /app/pytivo/requirements.txt && \

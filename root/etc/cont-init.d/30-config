@@ -3,6 +3,8 @@
 # make our folders
 mkdir -p /config/logs
 
+# populate /config if missing
+cp --no-clobber /app/pytivo/pyTivo.conf.dist /config/pyTivo.conf
 
 # permissions
 chmod +x /app/pytivo/pyTivo.py
