@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# unset unraid specific ENV to avoid crashing
+unset HOST_OS
+
+cd /app/pytivo || exit
+
+exec \
+	s6-setuidgid abc /usr/bin/${PYTHON_PKG} pyTivo.py \
+	-c /config/pyTivo.conf

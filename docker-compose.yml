@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  pytivo:
+    image: drnay/pytivo:latest
+#    network_mode: "host"
+    volumes:
+      - config:/config
+      - videos:/Videos
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+       - PUID=1000
+       - PGID=1000
+#      - TZ=America/Los_Angeles
+    ports:
+      - "9032:9032"
+volumes:
+  config:
+  videos:
